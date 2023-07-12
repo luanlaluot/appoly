@@ -12,7 +12,8 @@ export const Button = (
 			: theme.color?.common.white;
 	const colorContained =
 		props?.loading || props.disabled
-			? theme.color?.primary.lighter
+			? // ? theme.color?.primary.lighter
+			  theme?.color?.action.disabled
 			: theme?.color?.primary.main;
 	const colorText = theme.color?.common.white;
 	const backgroundColor =
@@ -39,7 +40,7 @@ export const Button = (
 			color: props.disabled
 				? props.variant === 'text'
 					? theme.color?.primary.light
-					: theme.color?.primary.main
+					: theme.color?.grey[500]
 				: props.variant === 'outlined' || props.variant === 'text'
 				? theme.color?.primary.main
 				: theme.color?.common.white,
