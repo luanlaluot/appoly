@@ -31,4 +31,6 @@ export type ButtonProps = {
 	 * Label of button style
 	 */
 	labelStyle?: StyleProp<TextStyle>;
+
+	iconStyle?: StyleProp<TextStyle>;
 } & TouchableOpacityProps;

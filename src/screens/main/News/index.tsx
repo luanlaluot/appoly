@@ -5,16 +5,11 @@ import Button from 'components/atoms/button';
 import { showMessage } from 'react-native-flash-message';
 import { useAuthContext } from 'provider/AuthProvider';
 
-const Home = () => {
+const News = () => {
 	const { setAuthenticated } = useAuthContext();
-	return (
-		<Container
-			header={{ title: 'Hi, Luan', avatar: 'https://i.pravatar.cc/300' }}>
-			<Button label="Đăng xuất" onPress={() => setAuthenticated?.(false)} />
-		</Container>
-	);
+	return <Container header={{ title: 'Bảng tin' }}></Container>;
 };
 
-export default Home;
+export default News;
 
 const styles = StyleSheet.create({});

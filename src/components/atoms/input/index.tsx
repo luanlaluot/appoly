@@ -36,7 +36,6 @@ const Input: BaseComponent<InputProps> = React.forwardRef(
 			},
 			[]
 		);
-		console.log(labelStyle);
 
 		return (
 			<View style={containerStyle}>

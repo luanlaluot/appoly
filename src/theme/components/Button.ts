@@ -26,12 +26,12 @@ export const Button = (
 		activeOpacity: 0.5,
 		style: {
 			backgroundColor: backgroundColor,
-			borderRadius: 10,
+			borderRadius: 6,
 			borderColor: !(props.variant === 'outlined' || props.variant === 'text')
 				? theme.color?.common.white
 				: theme?.color?.primary.main,
 			borderWidth: props.variant === 'outlined' ? 1 : 0,
-			padding: moderateScale(15),
+			padding: moderateScale(12),
 			justifyContent: 'center',
 			alignItems: 'center',
 			flexDirection: 'row',
@@ -44,7 +44,7 @@ export const Button = (
 				: props.variant === 'outlined' || props.variant === 'text'
 				? theme.color?.primary.main
 				: theme.color?.common.white,
-			fontSize: moderateScale(16),
+			fontSize: moderateScale(14),
 			marginHorizontal: 10,
 			fontWeight: 'bold',
 		},

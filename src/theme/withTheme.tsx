@@ -40,9 +40,6 @@ const ThemedComponent = <T,>(
 							children,
 							...rest,
 						};
-						console.log('asdjuigasudgasjdgagjkdas', overrideTheme?.style);
-						console.log('asdjuigasudgasjdgagjkdas', props?.style);
-
 						return <WrappedComponent ref={forwardedRef} {...newProps} />;
 					}}
 				</ThemeConsumer>

@@ -30,14 +30,13 @@ const Header = (props: HeaderProps) => {
 
 	return (
 		<View style={{}}>
-			{/* <View style={{ height: insets.top }} /> */}
 			<View
 				style={{
 					paddingHorizontal: theme?.spacing?.screen,
 				}}>
 				<View
 					style={{
-						height: 100,
+						height: 80,
 						justifyContent: 'space-between',
 						alignItems: 'center',
 						flexDirection: 'row',
@@ -59,7 +58,7 @@ const Header = (props: HeaderProps) => {
 						)}
 					</View>
 				</View>
-				{title && <Text h2>{title}</Text>}
+				{title && <Text h3>{title}</Text>}
 			</View>
 		</View>
 	);

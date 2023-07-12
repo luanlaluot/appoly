@@ -10,6 +10,7 @@ import BottomSheetSelect, {
 } from 'components/molecules/bottom-sheet-select';
 import { ActionSheetRef } from 'react-native-actions-sheet';
 import { isEmpty, isUndefined } from 'lodash';
+import { useAuthContext } from 'provider/AuthProvider';
 
 const OPTIONS = [
 	{
@@ -43,6 +44,7 @@ const OPTIONS = [
 ];
 
 const Login = () => {
+	const { setAuthenticated } = useAuthContext();
 	const [campus, setCampus] = useState<{ key: string; value: string }>();
 	const ref = useRef<ActionSheetRef>(null);
 	const [loading, setLoading] = useState(false);
@@ -58,6 +60,7 @@ const Login = () => {
 		setLoading(true);
 		setTimeout(() => {
 			setLoading(false);
+			setAuthenticated?.(true);
 		}, 2000);
 	};
 	return (

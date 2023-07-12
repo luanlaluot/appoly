@@ -16,6 +16,7 @@ const Button: BaseComponent<ButtonProps> = props => {
 		style,
 		iconStart,
 		iconEnd,
+		iconStyle,
 		...rest
 	} = props;
 	const getIconColor = useMemo(() => {
@@ -29,11 +30,13 @@ const Button: BaseComponent<ButtonProps> = props => {
 	}, [disabled, theme, variant]);
 
 	const Icon = useCallback(
-		({ element }: { element: any }) => {
+		({ element, position }: { element: any; position: 'left' | 'right' }) => {
 			return (
 				element &&
 				React.cloneElement(element, {
-					color: getIconColor,
+					marginLeft: position === 'right' ? 10 : 0,
+					marginRight: position === 'left' ? 10 : 0,
+					...(iconStyle as any),
 				})
 			);
 		},
@@ -46,9 +49,9 @@ const Button: BaseComponent<ButtonProps> = props => {
 				<ActivityIndicator color={theme?.color?.primary.main} />
 			) : (
 				<Fragment>
-					<Icon element={iconStart} />
+					<Icon element={iconStart} position="left" />
 					<Text style={labelStyle}>{label}</Text>
-					<Icon element={iconEnd} />
+					<Icon element={iconEnd} position="right" />
 				</Fragment>
 			)}
 		</TouchableOpacity>
