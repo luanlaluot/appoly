@@ -12,7 +12,6 @@ const Home = () => {
 		<Container
 			header={{
 				title: 'Hi, Luan',
-				avatar: 'https://i.pravatar.cc/300',
 			}}>
 			<SectionContainer title="Hôm nay">
 				<TodaySection />
