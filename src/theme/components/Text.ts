@@ -15,9 +15,9 @@ export const Text = (props: TextProps, theme: Theme): Partial<TextProps> => {
 			case h4:
 				return moderateScale(25);
 			case h5:
-				return moderateScale(15);
+				return moderateScale(12);
 			default:
-				return moderateScale(15);
+				return moderateScale(12);
 		}
 	};
 	return {

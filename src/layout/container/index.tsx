@@ -22,6 +22,7 @@ const Container = (props: ContainerProps) => {
 				showsVerticalScrollIndicator={false}
 				contentContainerStyle={{
 					paddingHorizontal: theme?.spacing?.screen,
+					flexGrow: 1,
 				}}>
 				{children}
 			</ScrollView>

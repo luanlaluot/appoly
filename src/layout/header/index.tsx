@@ -7,6 +7,7 @@ import Avatar from 'components/atoms/avatar';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { DrawerContent } from '@react-navigation/drawer';
 import { useTheme } from 'theme/ThemeProvider';
+import { moderateScale } from 'react-native-size-matters';
 export type HeaderProps = {
 	title?: string;
 	avatar?: string;
@@ -31,7 +32,7 @@ const Header = (props: HeaderProps) => {
 	return (
 		<View
 			style={{
-				paddingBottom: theme?.spacing?.screen,
+				paddingBottom: moderateScale(14),
 			}}>
 			<View
 				style={{
