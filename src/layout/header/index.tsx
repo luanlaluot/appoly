@@ -29,7 +29,10 @@ const Header = (props: HeaderProps) => {
 	};
 
 	return (
-		<View style={{}}>
+		<View
+			style={{
+				paddingBottom: theme?.spacing?.screen,
+			}}>
 			<View
 				style={{
 					paddingHorizontal: theme?.spacing?.screen,

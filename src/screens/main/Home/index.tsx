@@ -1,17 +1,43 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import Text from 'components/atoms/text';
 import Container from 'layout/container';
-import Button from 'components/atoms/button';
-import { showMessage } from 'react-native-flash-message';
 import { useAuthContext } from 'provider/AuthProvider';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import TodaySection from './components/today';
+import DayOffSection from './components/dayoff';
 
 const Home = () => {
 	const { setAuthenticated } = useAuthContext();
 	return (
 		<Container
-			header={{ title: 'Hi, Luan', avatar: 'https://i.pravatar.cc/300' }}>
-			<Button label="Đăng xuất" onPress={() => setAuthenticated?.(false)} />
+			header={{
+				title: 'Hi, Luan',
+				avatar: 'https://i.pravatar.cc/300',
+			}}>
+			<SectionContainer title="Hôm nay">
+				<TodaySection />
+			</SectionContainer>
+			<SectionContainer title="Điểm danh">
+				<DayOffSection />
+			</SectionContainer>
 		</Container>
+	);
+};
+
+const SectionContainer = ({
+	children,
+	title,
+}: {
+	title: string;
+	children: React.ReactNode;
+}) => {
+	return (
+		<View style={{ marginBottom: 20 }}>
+			<Text bold style={{ marginBottom: 10 }}>
+				{title}
+			</Text>
+			{children}
+		</View>
 	);
 };
 

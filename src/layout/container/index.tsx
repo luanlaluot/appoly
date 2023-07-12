@@ -19,10 +19,9 @@ const Container = (props: ContainerProps) => {
 			}}>
 			{header && <Header {...header} />}
 			<ScrollView
+				showsVerticalScrollIndicator={false}
 				contentContainerStyle={{
 					paddingHorizontal: theme?.spacing?.screen,
-					paddingTop: theme?.spacing?.screen,
-					flex: 1,
 				}}>
 				{children}
 			</ScrollView>
