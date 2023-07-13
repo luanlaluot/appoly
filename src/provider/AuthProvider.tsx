@@ -6,9 +6,14 @@ import React, {
 	useMemo,
 	useState,
 } from 'react';
+import { Cookies } from '@react-native-cookies/cookies';
+import { isUndefined } from 'lodash';
+import { AsyncStoreHelper } from '../helper';
 
 type AuthContextProps = {
 	isAuthenticated: boolean;
+	section?: Cookies;
+	setSection?(section?: Cookies): void;
 	setAuthenticated?(isAuthenticated: boolean): void;
 };
 const AuthContext = createContext<AuthContextProps>({
@@ -16,16 +21,24 @@ const AuthContext = createContext<AuthContextProps>({
 });
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-	const [isAuthenticated, setAuthenticated] = useState(true);
+	const [isAuthenticated, setAuthenticated] = useState(false);
+	const [section, setSection] = useState<Cookies | undefined>();
 	const handelAuthenticate = (isAuthenticated: boolean) => {
 		setAuthenticated(isAuthenticated);
 	};
+	console.log(section);
+
+	const handelSection = (section?: Cookies) => {
+		setSection(section);
+		if (section) AsyncStoreHelper.saveData('@section', section);
+	};
 	const value = useMemo(
 		() => ({
-			isAuthenticated,
+			isAuthenticated: !isUndefined(AsyncStoreHelper.getData('@section')),
 			setAuthenticated: handelAuthenticate,
+			setSection: handelSection,
 		}),
-		[isAuthenticated, handelAuthenticate]
+		[section, isAuthenticated, handelAuthenticate, handelSection]
 	);
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

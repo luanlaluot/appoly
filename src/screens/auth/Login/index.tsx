@@ -11,6 +11,7 @@ import BottomSheetSelect, {
 import { ActionSheetRef } from 'react-native-actions-sheet';
 import { isEmpty, isUndefined } from 'lodash';
 import { useAuthContext } from 'provider/AuthProvider';
+import { useNavigation } from '@react-navigation/native';
 
 const OPTIONS = [
 	{
@@ -44,10 +45,10 @@ const OPTIONS = [
 ];
 
 const Login = () => {
+	const navigation = useNavigation();
 	const { setAuthenticated } = useAuthContext();
 	const [campus, setCampus] = useState<{ key: string; value: string }>();
 	const ref = useRef<ActionSheetRef>(null);
-	const [loading, setLoading] = useState(false);
 	const handelItemPress = useCallback(
 		(campus: { key: string; value: string }) => {
 			const selectCampus = campus.key === 'cancel' ? undefined : campus;
@@ -57,17 +58,27 @@ const Login = () => {
 		[]
 	);
 	const handelLogin = () => {
-		setLoading(true);
-		setTimeout(() => {
-			setLoading(false);
-			setAuthenticated?.(true);
-		}, 2000);
+		navigation.navigate('Authenticator');
 	};
 	return (
-		<Container>
+		<Container scrollEnabled={false}>
 			<View style={{ flex: 3 }}>
-				<Text h2>AP</Text>
-				<Text h2>Polytechnic</Text>
+				<Text
+					bold
+					style={{
+						fontSize: 50,
+						lineHeight: 60,
+					}}>
+					AP
+				</Text>
+				<Text
+					bold
+					style={{
+						fontSize: 50,
+						lineHeight: 60,
+					}}>
+					Polytechnic
+				</Text>
 			</View>
 			<View style={{ flex: 2 }}>
 				<View style={{ flex: 1 }}>
@@ -81,7 +92,6 @@ const Login = () => {
 						}}
 					/>
 					<Button
-						loading={loading}
 						disabled={isEmpty(campus)}
 						label="Đăng nhập"
 						onPress={handelLogin}
@@ -101,5 +111,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const styles = StyleSheet.create({});

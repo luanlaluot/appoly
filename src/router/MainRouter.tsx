@@ -16,6 +16,7 @@ import Text from 'components/atoms/text';
 import Icon from 'components/atoms/icon';
 import NewsDetail from 'screens/main/NewsDetail';
 import Profile from 'screens/main/Profile';
+import TranscriptDetail from 'screens/main/TranscriptDetail';
 
 const DrawerContext = createContext<{ progress: number; setProgress?(): void }>(
 	{
@@ -92,6 +93,7 @@ export default () => {
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="Main" component={DrawerRouter} />
 			<Stack.Screen name="NewsDetail" component={NewsDetail} />
+			<Stack.Screen name="TranscriptDetail" component={TranscriptDetail} />
 			<Stack.Screen name="Profile" component={Profile} />
 		</Stack.Navigator>
 	);

@@ -17,9 +17,11 @@ import Button from 'components/atoms/button';
 import { moderateScale } from 'react-native-size-matters';
 import Avatar from 'components/atoms/avatar';
 import Icon from 'components/atoms/icon';
+import { useAuthContext } from 'provider/AuthProvider';
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
 	const { theme } = useTheme();
+	const { setSection } = useAuthContext();
 	const buildLink = useLinkBuilder();
 	const { state, descriptors, navigation } = props;
 	const focusedRoute = state.routes[state.index];
@@ -151,6 +153,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 						fontWeight: 'bold',
 					}}
 					iconStart={<Icon name={'log-out-outline'} size={20} />}
+					onPress={() => setSection?.(undefined)}
 				/>
 			</View>
 		</DrawerContentScrollView>

@@ -11,7 +11,6 @@ import { ActionSheetRef } from 'react-native-actions-sheet';
 import { FlashList } from '@shopify/flash-list';
 import { useTheme } from 'theme/ThemeProvider';
 import Text from 'components/atoms/text';
-import { useNavigation } from '@react-navigation/native';
 const OPTIONS = [
 	{
 		key: 'fall2023',
@@ -26,8 +25,7 @@ const OPTIONS = [
 		value: 'Spring 2023',
 	},
 ];
-const Transcript = () => {
-	const navigation = useNavigation();
+const TranscriptDetail = () => {
 	const ref = useRef<ActionSheetRef>(null);
 	const { theme } = useTheme();
 
@@ -46,6 +44,8 @@ const Transcript = () => {
 	);
 
 	const renderItem = useCallback(({ item }: any) => {
+		console.log(item.status);
+
 		return (
 			<TouchableOpacity
 				style={{
@@ -55,50 +55,74 @@ const Transcript = () => {
 					justifyContent: 'space-between',
 					flexDirection: 'row',
 					alignItems: 'center',
-				}}
-				onPress={() => navigation.navigate('TranscriptDetail')}>
-				<View style={{ flex: 1 }}>
-					<Text h4>Ý tưởng sáng tạo</Text>
-					<Text h2 bold>
-						9.0
-					</Text>
-				</View>
-				<View style={{ flex: 1, alignItems: 'flex-end' }}>
+				}}>
+				<View
+					style={{
+						flex: 1,
+						alignItems: 'center',
+						flexDirection: 'row',
+					}}>
 					<View
 						style={{
 							borderRadius: 6,
-							backgroundColor:
-								item.status === 0
-									? theme.color?.success.dark
-									: item.status === 1
-									? theme.color?.error.dark
-									: theme.color?.waring.dark,
+							backgroundColor: theme.color?.primary.main,
 							paddingVertical: 8,
-							paddingHorizontal: 30,
+							paddingHorizontal: 10,
 						}}>
 						<Text
 							bold
 							style={{
 								color: theme.color?.common.white,
 							}}>
-							Pass
+							40%
 						</Text>
 					</View>
+					<Text
+						style={{
+							marginLeft: 10,
+						}}>
+						Bảo vệ assignment
+					</Text>
+				</View>
+				<View style={{ flex: 1, alignItems: 'flex-end' }}>
+					<Text h4 bold>
+						9.0
+					</Text>
 				</View>
 			</TouchableOpacity>
 		);
 	}, []);
 	return (
-		<Container header={{ title: 'Bảng điểm' }} scrollEnabled={false}>
-			<Input
-				label={'Chọn kì học'}
-				value={term?.value}
-				touchable
-				iconEnd={<Icon size={20} name="chevron-down-outline" />}
-				onPress={() => {
-					ref?.current?.show();
-				}}
-			/>
+		<Container
+			header={{ title: 'Ý Tưởng Sáng Tạo', isDetail: true }}
+			scrollEnabled={false}>
+			<View
+				style={{
+					flexDirection: 'row',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					marginBottom: 20,
+				}}>
+				<View
+					style={{
+						alignSelf: 'center',
+						borderRadius: 6,
+						backgroundColor: theme.color?.success.dark,
+						paddingVertical: 8,
+						paddingHorizontal: 30,
+					}}>
+					<Text
+						bold
+						style={{
+							color: theme.color?.common.white,
+						}}>
+						Pass
+					</Text>
+				</View>
+				<Text bold h1>
+					9.5
+				</Text>
+			</View>
 			<FlashList
 				data={[
 					{ title: 'test', status: 0 },
@@ -117,6 +141,6 @@ const Transcript = () => {
 	);
 };
 
-export default Transcript;
+export default TranscriptDetail;
 
 const styles = StyleSheet.create({});
