@@ -34,11 +34,11 @@ const Container = (props: ContainerProps) => {
 				<WrapChildren
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{
-						paddingHorizontal: theme.spacing?.screen,
 						...(containerStyle as any),
 						overflow: 'hidden',
 					}}
 					style={{
+						paddingHorizontal: theme.spacing?.screen,
 						flexGrow: 1,
 						...(containerStyle as any),
 						overflow: 'hidden',

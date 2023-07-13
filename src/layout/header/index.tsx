@@ -60,7 +60,7 @@ const Header = (props: HeaderProps) => {
 						/>
 					</View>
 				</View>
-				{title && <Text h3>{title}</Text>}
+				{title && <Text h1>{title}</Text>}
 			</View>
 		</View>
 	);

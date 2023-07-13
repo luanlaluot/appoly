@@ -41,7 +41,9 @@ const BottomSheetSelect = React.forwardRef(
 			<ActionSheet ref={ref}>
 				<View style={{ padding: 20 }}>
 					<View style={{ marginBottom: 20 }}>
-						<Text bold>Lựa chọn cơ sở</Text>
+						<Text h4 bold>
+							Lựa chọn cơ sở
+						</Text>
 					</View>
 					<View>
 						{renderOptions?.map(option => {
@@ -54,6 +56,7 @@ const BottomSheetSelect = React.forwardRef(
 									}}
 									onPress={onItemPress}>
 									<Text
+										h4
 										style={{
 											color:
 												option.key === 'cancel'
