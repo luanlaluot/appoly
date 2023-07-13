@@ -16,11 +16,13 @@ import { useTheme } from 'theme/ThemeProvider';
 export type ContainerProps = {
 	header?: HeaderProps;
 	containerStyle?: StyleProp<ViewStyle>;
+	scrollEnabled?: boolean;
 } & PropsWithChildren;
 
 const Container = (props: ContainerProps) => {
 	const { theme } = useTheme();
-	const { children, header, containerStyle = {} } = props;
+	const { children, header, containerStyle = {}, scrollEnabled = true } = props;
+	const WrapChildren = scrollEnabled ? ScrollView : View;
 	return (
 		<SafeAreaView
 			style={{
@@ -28,16 +30,22 @@ const Container = (props: ContainerProps) => {
 				flex: 1,
 			}}>
 			{header && <Header {...header} />}
-			<ScrollView
-				scrollEnabled={false}
-				showsVerticalScrollIndicator={false}
-				contentContainerStyle={{
-					flexGrow: 1,
-					paddingHorizontal: theme.spacing?.screen,
-					...(containerStyle as any),
-				}}>
-				{children}
-			</ScrollView>
+			<View style={{ flex: 1 }}>
+				<WrapChildren
+					showsVerticalScrollIndicator={false}
+					contentContainerStyle={{
+						paddingHorizontal: theme.spacing?.screen,
+						...(containerStyle as any),
+						overflow: 'hidden',
+					}}
+					style={{
+						flexGrow: 1,
+						...(containerStyle as any),
+						overflow: 'hidden',
+					}}>
+					{children}
+				</WrapChildren>
+			</View>
 		</SafeAreaView>
 	);
 };
