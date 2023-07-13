@@ -43,7 +43,7 @@ const Input: BaseComponent<InputProps> = React.forwardRef(
 
 				<TouchableOpacity
 					style={inputStyle}
-					disabled={!touchable && isUndefined(onPress)}
+					disabled={!touchable || isUndefined(onPress)}
 					onPress={onPress}>
 					{!props.multiline && (
 						<Icon element={iconStart} onPress={iconStartPress} />

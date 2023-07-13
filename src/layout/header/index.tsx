@@ -10,13 +10,13 @@ import { useTheme } from 'theme/ThemeProvider';
 import { moderateScale } from 'react-native-size-matters';
 export type HeaderProps = {
 	title?: string;
-
 	isDetail?: boolean;
+	hiddenAvatar?: boolean;
 };
 const Header = (props: HeaderProps) => {
-	const { title, isDetail } = props;
+	const { title, isDetail, hiddenAvatar = false } = props;
 	const { theme } = useTheme();
-	const navigation = useNavigation();
+	const navigation = useNavigation<any>();
 	const insets = useSafeAreaInsets();
 
 	const ActionButton = () => {
@@ -49,15 +49,17 @@ const Header = (props: HeaderProps) => {
 						<ActionButton />
 					</View>
 					<View>
-						<Avatar
-							source={{
-								uri: 'https://i.pravatar.cc/300',
-							}}
-							rounded
-							onPress={() => {
-								console.log('test');
-							}}
-						/>
+						{!hiddenAvatar && (
+							<Avatar
+								source={{
+									uri: 'https://i.pravatar.cc/300',
+								}}
+								rounded
+								onPress={() => {
+									navigation.navigate('Profile');
+								}}
+							/>
+						)}
 					</View>
 				</View>
 				{title && <Text h1>{title}</Text>}

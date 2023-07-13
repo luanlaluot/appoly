@@ -36,7 +36,7 @@ const News = () => {
 		{ key: 'four', title: 'Việc làm' },
 	]);
 	return (
-		<Container header={{ title: 'Bảng tin' }}>
+		<Container header={{ title: 'Bảng tin' }} scrollEnabled={false}>
 			<TabView
 				navigationState={{ index, routes }}
 				onIndexChange={setIndex}

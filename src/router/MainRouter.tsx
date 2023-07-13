@@ -14,6 +14,8 @@ import Transcript from 'screens/main/Transcript';
 import { View } from 'react-native';
 import Text from 'components/atoms/text';
 import Icon from 'components/atoms/icon';
+import NewsDetail from 'screens/main/NewsDetail';
+import Profile from 'screens/main/Profile';
 
 const DrawerContext = createContext<{ progress: number; setProgress?(): void }>(
 	{
@@ -44,6 +46,7 @@ const DrawerRouter = () => {
 			<Drawer.Screen
 				name="Home"
 				options={{
+					drawerLabel: 'Trang chính',
 					drawerIcon: ({ focused }) => (
 						<DrawerIcon focused={focused} icon="home" />
 					),
@@ -54,6 +57,7 @@ const DrawerRouter = () => {
 				name="News"
 				component={News}
 				options={{
+					drawerLabel: 'Bảng tin',
 					drawerIcon: ({ focused }) => (
 						<DrawerIcon focused={focused} icon="notifications" />
 					),
@@ -63,6 +67,7 @@ const DrawerRouter = () => {
 				name="Schedule"
 				component={Schedule}
 				options={{
+					drawerLabel: 'Lịch học',
 					drawerIcon: ({ focused }) => (
 						<DrawerIcon focused={focused} icon="calendar" />
 					),
@@ -72,6 +77,7 @@ const DrawerRouter = () => {
 				name="Transcript"
 				component={Transcript}
 				options={{
+					drawerLabel: 'Bảng điểm',
 					drawerIcon: ({ focused }) => (
 						<DrawerIcon focused={focused} icon="reader" />
 					),
@@ -85,6 +91,8 @@ export default () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name="Main" component={DrawerRouter} />
+			<Stack.Screen name="NewsDetail" component={NewsDetail} />
+			<Stack.Screen name="Profile" component={Profile} />
 		</Stack.Navigator>
 	);
 };

@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import { useTheme } from 'theme/ThemeProvider';
 import Text from 'components/atoms/text';
+import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
 	{
@@ -48,6 +49,7 @@ const DATA = [
 ];
 
 const Activity = () => {
+	const navigation = useNavigation<any>();
 	const { theme } = useTheme();
 	return (
 		<ScrollView
@@ -62,7 +64,8 @@ const Activity = () => {
 							marginBottom: 10,
 							borderRadius: 6,
 							alignItems: 'baseline',
-						}}>
+						}}
+						onPress={() => navigation.navigate('NewsDetail')}>
 						<Text>{item.time}</Text>
 						<Text
 							bold

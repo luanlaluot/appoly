@@ -22,7 +22,7 @@ export const Input = (props: InputProps, theme: Theme): Partial<InputProps> => {
 			alignItems: 'center',
 		},
 		labelStyle: {
-			fontSize: moderateScale(14),
+			fontSize: moderateScale(12),
 			marginBottom: moderateScale(3),
 			color: theme?.color?.common.black,
 			fontWeight: 'bold',
